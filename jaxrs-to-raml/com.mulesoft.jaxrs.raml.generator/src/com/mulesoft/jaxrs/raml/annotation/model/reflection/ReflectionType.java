@@ -34,6 +34,9 @@ public class ReflectionType extends ReflectionGenericElement<Class<?>> implement
 	 * @return an array of {@link com.mulesoft.jaxrs.raml.annotation.model.IMethodModel} objects.
 	 */
 	public IMethodModel[] getMethods() {
+		/*if (element == null){
+			return new IMethodModel[0];
+		}*/
 		Method[] declaredMethods = element.getDeclaredMethods();
 		IMethodModel[] methods=new IMethodModel[declaredMethods.length];
 		int a=0;
@@ -50,6 +53,9 @@ public class ReflectionType extends ReflectionGenericElement<Class<?>> implement
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getName() {
+		/*if (element == null){
+			return "Unknown element";
+		}*/
 		return element.getSimpleName();
 	}
 
@@ -60,6 +66,9 @@ public class ReflectionType extends ReflectionGenericElement<Class<?>> implement
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getFullyQualifiedName() {
+		/*if (element == null){
+			return "Unknown element";
+		}*/
 		return element.getCanonicalName();
 	}
 
@@ -67,6 +76,9 @@ public class ReflectionType extends ReflectionGenericElement<Class<?>> implement
 	/** {@inheritDoc} */
 	@Override
 	public IFieldModel[] getFields() {
+		/*if (element == null){
+			return  new IFieldModel[0];
+		}*/
 		Field[] declaredFields= element.getDeclaredFields();
 		IFieldModel[] fields=new IFieldModel[declaredFields.length];
 		int a=0;
@@ -79,6 +91,9 @@ public class ReflectionType extends ReflectionGenericElement<Class<?>> implement
 
 	@Override
 	public ITypeModel getSuperClass() {
+		/*if (this.element == null){
+			return null;
+		}*/
 		Class<?> superClass = this.element.getSuperclass();		
 		return superClass!=null ? new ReflectionType(superClass) : null;
 	}
@@ -86,6 +101,9 @@ public class ReflectionType extends ReflectionGenericElement<Class<?>> implement
 
 	@Override
 	public ITypeModel[] getImplementedInterfaces() {
+		/*if (this.element == null){
+			return new ITypeModel[0];
+		}*/
 		Class<?>[] interfaces = this.element.getInterfaces();
 		if(interfaces==null||interfaces.length==0){
 			return new ITypeModel[0];
@@ -100,6 +118,9 @@ public class ReflectionType extends ReflectionGenericElement<Class<?>> implement
 
 	@Override
 	public ITypeModel resolveClass(String qualifiedName) {
+		/*if (this.element == null){
+			return null;
+		}*/
 		try {
 			Class<?> clazz = this.element.getClassLoader().loadClass(qualifiedName);
 			if(clazz==null){

@@ -76,7 +76,7 @@ public class JsonSchemaModelSerializer extends StructuredModelSerializer {
 							keyType = msp.getKeyType();
 							typeString = detectType(msp.getValueType(),null);
 						}
-						if(!keyType.getClassName().equals(SimpleType.STRING.getClassName())){
+						/*if(!keyType.getClassName().equals(SimpleType.STRING.getClassName())){
 							StringBuilder bld = new StringBuilder("Invalid map key type. Only String is available as key type.");
 							if(type!=null){
 								bld.append(" Type: " + type.getClassQualifiedName());
@@ -85,7 +85,7 @@ public class JsonSchemaModelSerializer extends StructuredModelSerializer {
 								bld.append(" Property: " + prop.getName());
 							}
 							throw new IllegalArgumentException(bld.toString());
-						}
+						}*/
 					}
 					else{
 						typeString = detectType(type,prop);

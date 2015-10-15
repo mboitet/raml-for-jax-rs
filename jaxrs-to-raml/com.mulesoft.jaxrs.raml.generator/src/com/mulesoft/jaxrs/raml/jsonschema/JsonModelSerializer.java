@@ -146,7 +146,9 @@ public class JsonModelSerializer extends StructuredModelSerializer {
 				}
 				else { 
 					Object defaultValue = DefaultValueFactory.getDefaultValue(prop);
-					item.put(propName, defaultValue);
+					if (propName != null && item != null){
+						item.put(propName, defaultValue);
+					}
 				}
 			} catch (JSONException e) {
 				e.printStackTrace();

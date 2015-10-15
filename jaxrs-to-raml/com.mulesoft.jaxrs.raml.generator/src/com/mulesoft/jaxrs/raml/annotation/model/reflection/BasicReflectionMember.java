@@ -84,6 +84,9 @@ public abstract class BasicReflectionMember<T extends AnnotatedElement> implemen
 	 * @return an array of {@link com.mulesoft.jaxrs.raml.annotation.model.IAnnotationModel} objects.
 	 */
 	public IAnnotationModel[] getAnnotations() {
+		if (element == null){
+		return new IAnnotationModel[0];
+		}
 		Annotation[] annotations = element.getAnnotations();
 		IAnnotationModel[] ml=new IAnnotationModel[annotations.length];
 		for (int a=0;a<annotations.length;a++){

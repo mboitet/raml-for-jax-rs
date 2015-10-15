@@ -607,16 +607,18 @@ public class SpoonProcessor{
 		fillBasic(fm, m);
 		CtTypeReference<?> type = m.getType();
 		fillJAXBType(fm,type);
-		
-		String typeSimpleName = type.getSimpleName();
-		String typeQualifiedname = type.getQualifiedName();
-		if(typeSimpleName.equalsIgnoreCase(typeQualifiedname)){
-			for(ITypeParameter tp : ownerType.getTypeParameters()){			
-				if(typeSimpleName.equals(tp.getName())){
-					fm.setGeneric(true);
+		if (type != null){
+			String typeSimpleName = type.getSimpleName();
+			String typeQualifiedname = type.getQualifiedName();
+			if(typeSimpleName.equalsIgnoreCase(typeQualifiedname)){
+				for(ITypeParameter tp : ownerType.getTypeParameters()){			
+					if(typeSimpleName.equals(tp.getName())){
+						fm.setGeneric(true);
+					}
 				}
 			}
 		}
+		
 		return fm;
 	}
 
